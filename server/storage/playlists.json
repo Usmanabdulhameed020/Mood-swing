@@ -1,0 +1,696 @@
+[
+  {
+    "id": "5b3f9fc9-8ac8-42a7-b0df-75864faca051",
+    "mood": "excited",
+    "name": "Peak Excitement",
+    "description": "High-energy anthems and dancefloor-ready bangers to match your ecstatic mood.",
+    "coverGradient": "from-cyan-400 via-pink-500 to-yellow-400",
+    "songs": [
+      {
+        "title": "Timber",
+        "artist": "Pitbull ft. Kesha",
+        "album": "Meltdown EP",
+        "genre": "Dance-Pop/Folktronica",
+        "releaseYear": 2013,
+        "duration": "3:24",
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/c/3/8/0/c38cc6fefa309b9509744de6bf649c4e.mp3?hdnea=exp=1782138071~acl=/api/1/1/c/3/8/0/c38cc6fefa309b9509744de6bf649c4e.mp3*~data=user_id=0,application_id=42~hmac=109258657a2eb463c2ae05e6ef46fec0b292c0f4399b668dd0f87d0b8553dacf",
+        "albumArtwork": "https://cdn-images.dzcdn.net/images/cover/c70750fc7943ae13d3e6ccad60c3c0af/250x250-000000-80-0-0.jpg",
+        "deezerLink": "https://www.deezer.com/track/71403230",
+        "spotifyLink": "https://open.spotify.com/search/Timber%20Pitbull%20ft.%20Kesha",
+        "youtubeLink": "https://www.youtube.com/results?search_query=Timber%20Pitbull%20ft.%20Kesha"
+      },
+      {
+        "title": "Lovely Day",
+        "artist": "Bill Withers",
+        "album": "Menagerie",
+        "genre": "Soul",
+        "releaseYear": 1977,
+        "duration": "4:15",
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/5/4/9/0/54990f6f330263be6d7e54bc2d96cb92.mp3?hdnea=exp=1782138071~acl=/api/1/1/5/4/9/0/54990f6f330263be6d7e54bc2d96cb92.mp3*~data=user_id=0,application_id=42~hmac=81567d39bb5cf849855d5db98e59fd485829ff6079fdd75d9e36bed7ee0b526d",
+        "albumArtwork": "https://cdn-images.dzcdn.net/images/cover/fa6df4b25ad97fd60c66b6da03975f96/250x250-000000-80-0-0.jpg",
+        "deezerLink": "https://www.deezer.com/track/2580953982",
+        "spotifyLink": "https://open.spotify.com/search/Lovely%20Day%20Bill%20Withers",
+        "youtubeLink": "https://www.youtube.com/results?search_query=Lovely%20Day%20Bill%20Withers"
+      },
+      {
+        "title": "Feel So Close",
+        "artist": "Calvin Harris",
+        "album": "18 Months",
+        "genre": "Electro House",
+        "releaseYear": 2011,
+        "duration": "3:28",
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/e/3/2/0/e32ccdaea23d6c132f169d9828b8cf39.mp3?hdnea=exp=1782138071~acl=/api/1/1/e/3/2/0/e32ccdaea23d6c132f169d9828b8cf39.mp3*~data=user_id=0,application_id=42~hmac=987240105ce0003243ca4e55c2140c752d5743abf8e6bd47db5b46f1a5cc9adb",
+        "albumArtwork": "https://cdn-images.dzcdn.net/images/cover/4460325c28c9df806898747bcfe6de42/250x250-000000-80-0-0.jpg",
+        "deezerLink": "https://www.deezer.com/track/2780348891",
+        "spotifyLink": "https://open.spotify.com/search/Feel%20So%20Close%20Calvin%20Harris",
+        "youtubeLink": "https://www.youtube.com/results?search_query=Feel%20So%20Close%20Calvin%20Harris"
+      },
+      {
+        "title": "Glad You Came",
+        "artist": "The Wanted",
+        "album": "Battleground",
+        "genre": "Dance-Pop",
+        "releaseYear": 2011,
+        "duration": "3:18",
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/a/6/b/0/a6b0f1413ec56d1bb3fc699178a13d92.mp3?hdnea=exp=1782138071~acl=/api/1/1/a/6/b/0/a6b0f1413ec56d1bb3fc699178a13d92.mp3*~data=user_id=0,application_id=42~hmac=88101b3fdc8a2d9c45c9def99416377cf7f256ef814fae9cd73e24e03a833777",
+        "albumArtwork": "https://cdn-images.dzcdn.net/images/cover/bfa3864eb35e5d56a99743230caef4a7/250x250-000000-80-0-0.jpg",
+        "deezerLink": "https://www.deezer.com/track/1769465647",
+        "spotifyLink": "https://open.spotify.com/search/Glad%20You%20Came%20The%20Wanted",
+        "youtubeLink": "https://www.youtube.com/results?search_query=Glad%20You%20Came%20The%20Wanted"
+      },
+      {
+        "title": "Wake Me Up",
+        "artist": "Avicii",
+        "album": "True",
+        "genre": "Folktronica",
+        "releaseYear": 2013,
+        "duration": "4:07",
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/9/3/a/0/93a023759118ca2f5bc17c7c0c07ba1b.mp3?hdnea=exp=1782138071~acl=/api/1/1/9/3/a/0/93a023759118ca2f5bc17c7c0c07ba1b.mp3*~data=user_id=0,application_id=42~hmac=3843803c3858587d7a9339b87bb271910e0261bc4d97dc6dc993a9c3aa5d6b66",
+        "albumArtwork": "https://cdn-images.dzcdn.net/images/cover/ec97306735b46ec334e0ce562290775b/250x250-000000-80-0-0.jpg",
+        "deezerLink": "https://www.deezer.com/track/70266756",
+        "spotifyLink": "https://open.spotify.com/search/Wake%20Me%20Up%20Avicii",
+        "youtubeLink": "https://www.youtube.com/results?search_query=Wake%20Me%20Up%20Avicii"
+      }
+    ],
+    "tips": [
+      "Let loose and dance like nobody is watching!",
+      "Perfect playlist for getting ready for a fun night out."
+    ],
+    "createdAt": "2026-06-22T14:05:42.710Z"
+  },
+  {
+    "id": "2514bea7-96af-4db0-9c65-2ccf7041ccdb",
+    "mood": "energetic",
+    "name": "Sonic Fuel",
+    "description": "High-bpm, high-intensity tracks to supercharge your workout or get your blood pumping.",
+    "coverGradient": "from-yellow-400 to-red-500",
+    "songs": [
+      {
+        "title": "Power",
+        "artist": "Kanye West",
+        "album": "My Beautiful Dark Twisted Fantasy",
+        "genre": "Hip Hop",
+        "releaseYear": 2010,
+        "duration": "4:52",
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/4/a/a/0/4aa5d2dce95b43b74605ad529180483a.mp3?hdnea=exp=1782138000~acl=/api/1/1/4/a/a/0/4aa5d2dce95b43b74605ad529180483a.mp3*~data=user_id=0,application_id=42~hmac=573f2c1aeba0659a6a50809df5f7e974153ca502b5526581a23860ced7301f14",
+        "albumArtwork": "https://cdn-images.dzcdn.net/images/cover/742aba8510ba803bea51d304cf2ca786/250x250-000000-80-0-0.jpg",
+        "deezerLink": "https://www.deezer.com/track/7667059",
+        "spotifyLink": "https://open.spotify.com/search/Power%20Kanye%20West",
+        "youtubeLink": "https://www.youtube.com/results?search_query=Power%20Kanye%20West"
+      },
+      {
+        "title": "Level Up",
+        "artist": "Ciara",
+        "album": "Beauty Marks",
+        "genre": "Dance-Pop",
+        "releaseYear": 2018,
+        "duration": "3:24",
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/b/f/b/0/bfbacb2f31afef1697f98a16fd4e3c21.mp3?hdnea=exp=1782138000~acl=/api/1/1/b/f/b/0/bfbacb2f31afef1697f98a16fd4e3c21.mp3*~data=user_id=0,application_id=42~hmac=9b9e25083a1c81d80a71b53671236009f84ab683db77343d4628d3f9fde60ed5",
+        "albumArtwork": "https://cdn-images.dzcdn.net/images/cover/a5d56ae5cdbf3b9abd7053775467ab00/250x250-000000-80-0-0.jpg",
+        "deezerLink": "https://www.deezer.com/track/532333482",
+        "spotifyLink": "https://open.spotify.com/search/Level%20Up%20Ciara",
+        "youtubeLink": "https://www.youtube.com/results?search_query=Level%20Up%20Ciara"
+      },
+      {
+        "title": "Lose Yourself",
+        "artist": "Eminem",
+        "album": "8 Mile OST",
+        "genre": "Hip Hop",
+        "releaseYear": 2002,
+        "duration": "5:26",
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/f/d/5/0/fd54871e8460df5a5fc97da5a5dda155.mp3?hdnea=exp=1782138000~acl=/api/1/1/f/d/5/0/fd54871e8460df5a5fc97da5a5dda155.mp3*~data=user_id=0,application_id=42~hmac=0c118f587d3d90a86d278ff952dd29857c9873ce3e54c00f41ae1c352f7c010f",
+        "albumArtwork": "https://cdn-images.dzcdn.net/images/cover/6fa1402225904c274083a73f6618cdcf/250x250-000000-80-0-0.jpg",
+        "deezerLink": "https://www.deezer.com/track/1579904",
+        "spotifyLink": "https://open.spotify.com/search/Lose%20Yourself%20Eminem",
+        "youtubeLink": "https://www.youtube.com/results?search_query=Lose%20Yourself%20Eminem"
+      },
+      {
+        "title": "Till I Collapse",
+        "artist": "Eminem",
+        "album": "The Eminem Show",
+        "genre": "Hip Hop",
+        "releaseYear": 2002,
+        "duration": "4:57",
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/8/4/6/0/846995adc7246b0d3a90d6c3281a298a.mp3?hdnea=exp=1782138000~acl=/api/1/1/8/4/6/0/846995adc7246b0d3a90d6c3281a298a.mp3*~data=user_id=0,application_id=42~hmac=e3b79c1fbd32c3fb00d8bae2540f7b270257a56c024e073622795af56ae4307b",
+        "albumArtwork": "https://cdn-images.dzcdn.net/images/cover/ec3c8ed67427064c70f67e5815b74cef/250x250-000000-80-0-0.jpg",
+        "deezerLink": "https://www.deezer.com/track/916445",
+        "spotifyLink": "https://open.spotify.com/search/Till%20I%20Collapse%20Eminem",
+        "youtubeLink": "https://www.youtube.com/results?search_query=Till%20I%20Collapse%20Eminem"
+      },
+      {
+        "title": "Stronger",
+        "artist": "Kanye West",
+        "album": "Graduation",
+        "genre": "Hip Hop",
+        "releaseYear": 2007,
+        "duration": "5:11",
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/c/8/7/0/c8777e35f09472d0e689a6738fc6810a.mp3?hdnea=exp=1782138000~acl=/api/1/1/c/8/7/0/c8777e35f09472d0e689a6738fc6810a.mp3*~data=user_id=0,application_id=42~hmac=51daa8c3252aaccc5f416938434975bdc2f96206769b4f90d2517665c4b0b676",
+        "albumArtwork": "https://cdn-images.dzcdn.net/images/cover/15012d974c6263aec95e52e6d86cba23/250x250-000000-80-0-0.jpg",
+        "deezerLink": "https://www.deezer.com/track/1178682",
+        "spotifyLink": "https://open.spotify.com/search/Stronger%20Kanye%20West",
+        "youtubeLink": "https://www.youtube.com/results?search_query=Stronger%20Kanye%20West"
+      }
+    ],
+    "tips": [
+      "Use this to break through the afternoon slump instead of reaching for a third coffee.",
+      "Perfect for your cardio sessions, running, or intensive workouts."
+    ],
+    "createdAt": "2026-06-22T14:04:31.204Z"
+  },
+  {
+    "id": "859b4773-7255-4352-b30f-f2f56c36d348",
+    "mood": "energetic",
+    "name": "Power Surge",
+    "description": "No limits, no brakes. Pure kinetic energy packed into five unstoppable tracks.",
+    "coverGradient": "from-orange-500 to-red-600",
+    "songs": [
+      {
+        "title": "Titanium",
+        "artist": "David Guetta ft. Sia",
+        "album": "Nothing but the Beat",
+        "genre": "Dance-Pop",
+        "releaseYear": 2011,
+        "duration": "4:05",
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/6/7/0/0/6704168518eedd6eff222b5fb55f86c0.mp3?hdnea=exp=1782137778~acl=/api/1/1/6/7/0/0/6704168518eedd6eff222b5fb55f86c0.mp3*~data=user_id=0,application_id=42~hmac=aa2c759af9a8de63594dea75a1c9113075263427041c1db734478ab2a803151e",
+        "albumArtwork": "https://cdn-images.dzcdn.net/images/cover/52330286cb5008805253fd77c7111d3f/250x250-000000-80-0-0.jpg",
+        "deezerLink": "https://www.deezer.com/track/62847142",
+        "spotifyLink": "https://open.spotify.com/search/Titanium%20David%20Guetta%20ft.%20Sia",
+        "youtubeLink": "https://www.youtube.com/results?search_query=Titanium%20David%20Guetta%20ft.%20Sia"
+      },
+      {
+        "title": "One More Time",
+        "artist": "Daft Punk",
+        "album": "Discovery",
+        "genre": "House/Electronic",
+        "releaseYear": 2000,
+        "duration": "5:20",
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/5/b/a/0/5bad601874af5b939d552f707f31fc93.mp3?hdnea=exp=1782137778~acl=/api/1/1/5/b/a/0/5bad601874af5b939d552f707f31fc93.mp3*~data=user_id=0,application_id=42~hmac=bf5b4b549c503d465cd7a018d6451daaf97d48c82c76351d75abe33f97fd89aa",
+        "albumArtwork": "https://cdn-images.dzcdn.net/images/cover/ad58f2ec5249108827083f22bba66e4a/250x250-000000-80-0-0.jpg",
+        "deezerLink": "https://www.deezer.com/track/2490954011",
+        "spotifyLink": "https://open.spotify.com/search/One%20More%20Time%20Daft%20Punk",
+        "youtubeLink": "https://www.youtube.com/results?search_query=One%20More%20Time%20Daft%20Punk"
+      },
+      {
+        "title": "Wake Me Up",
+        "artist": "Avicii",
+        "album": "True",
+        "genre": "Folktronica",
+        "releaseYear": 2013,
+        "duration": "4:07",
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/9/3/a/0/93a023759118ca2f5bc17c7c0c07ba1b.mp3?hdnea=exp=1782137778~acl=/api/1/1/9/3/a/0/93a023759118ca2f5bc17c7c0c07ba1b.mp3*~data=user_id=0,application_id=42~hmac=e718d24589a9819546b422462b15b3aa323975183660d31607495859cd9ff79c",
+        "albumArtwork": "https://cdn-images.dzcdn.net/images/cover/ec97306735b46ec334e0ce562290775b/250x250-000000-80-0-0.jpg",
+        "deezerLink": "https://www.deezer.com/track/70266756",
+        "spotifyLink": "https://open.spotify.com/search/Wake%20Me%20Up%20Avicii",
+        "youtubeLink": "https://www.youtube.com/results?search_query=Wake%20Me%20Up%20Avicii"
+      },
+      {
+        "title": "Raise Your Glass",
+        "artist": "P!nk",
+        "album": "Greatest Hits... So Far!!!",
+        "genre": "Pop Rock",
+        "releaseYear": 2010,
+        "duration": "3:23",
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/8/7/3/0/87392814cf62bce1faebb3d85d8ea475.mp3?hdnea=exp=1782137778~acl=/api/1/1/8/7/3/0/87392814cf62bce1faebb3d85d8ea475.mp3*~data=user_id=0,application_id=42~hmac=e31ec79dd982672dd73c2f91c97116908623a36092911cc14d07f2b913a08137",
+        "albumArtwork": "https://cdn-images.dzcdn.net/images/cover/822dd8968617b2da70dcaa5804556512/250x250-000000-80-0-0.jpg",
+        "deezerLink": "https://www.deezer.com/track/15597831",
+        "spotifyLink": "https://open.spotify.com/search/Raise%20Your%20Glass%20P!nk",
+        "youtubeLink": "https://www.youtube.com/results?search_query=Raise%20Your%20Glass%20P!nk"
+      },
+      {
+        "title": "Level Up",
+        "artist": "Ciara",
+        "album": "Beauty Marks",
+        "genre": "Dance-Pop",
+        "releaseYear": 2018,
+        "duration": "3:24",
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/b/f/b/0/bfbacb2f31afef1697f98a16fd4e3c21.mp3?hdnea=exp=1782137778~acl=/api/1/1/b/f/b/0/bfbacb2f31afef1697f98a16fd4e3c21.mp3*~data=user_id=0,application_id=42~hmac=0ebda632891c46e0139e63640b2cf7e6847ea667771f310fcf890850cd7d1e50",
+        "albumArtwork": "https://cdn-images.dzcdn.net/images/cover/a5d56ae5cdbf3b9abd7053775467ab00/250x250-000000-80-0-0.jpg",
+        "deezerLink": "https://www.deezer.com/track/532333482",
+        "spotifyLink": "https://open.spotify.com/search/Level%20Up%20Ciara",
+        "youtubeLink": "https://www.youtube.com/results?search_query=Level%20Up%20Ciara"
+      }
+    ],
+    "tips": [
+      "Stand up and do some quick stretches or jumping jacks while listening!",
+      "Perfect for your cardio sessions, running, or intensive workouts."
+    ],
+    "createdAt": "2026-06-22T14:00:49.841Z"
+  },
+  {
+    "id": "97359191-4ae5-4cae-9c09-c2866b4b8c3a",
+    "mood": "happy",
+    "name": "Happy Go Lucky",
+    "description": "The ultimate sonic pick-me-up. Press play and let the good vibes take over.",
+    "coverGradient": "from-yellow-300 to-pink-500",
+    "songs": [
+      {
+        "title": "Best Day of My Life",
+        "artist": "American Authors",
+        "album": "Oh, What a Life",
+        "genre": "Indie Pop",
+        "releaseYear": 2013,
+        "duration": "3:14",
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/1/c/9/0/1c92390597d0b3dc1376eb30c54f6fd4.mp3?hdnea=exp=1782136874~acl=/api/1/1/1/c/9/0/1c92390597d0b3dc1376eb30c54f6fd4.mp3*~data=user_id=0,application_id=42~hmac=8473bd36e9d990d594b8fb29438286b2c571b5ca7da4dcc5f384bb152cd6ecf9",
+        "albumArtwork": "https://cdn-images.dzcdn.net/images/cover/b965a1aa1b44e52fa89ab7b393a80eeb/250x250-000000-80-0-0.jpg",
+        "deezerLink": "https://www.deezer.com/track/75711295",
+        "spotifyLink": "https://open.spotify.com/search/Best%20Day%20of%20My%20Life%20American%20Authors",
+        "youtubeLink": "https://www.youtube.com/results?search_query=Best%20Day%20of%20My%20Life%20American%20Authors"
+      },
+      {
+        "title": "Roar",
+        "artist": "Katy Perry",
+        "album": "Prism",
+        "genre": "Pop",
+        "releaseYear": 2013,
+        "duration": "3:43",
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/b/7/3/0/b736dd36182238f4e1cf947d03e27c32.mp3?hdnea=exp=1782136874~acl=/api/1/1/b/7/3/0/b736dd36182238f4e1cf947d03e27c32.mp3*~data=user_id=0,application_id=42~hmac=b6bbaf7cf6f817d7b8050ee6ab2a7a0f172aad078701db9211485152a23e1c26",
+        "albumArtwork": "https://cdn-images.dzcdn.net/images/cover/aec042e5c3047070dfe35c705a525874/250x250-000000-80-0-0.jpg",
+        "deezerLink": "https://www.deezer.com/track/69863090",
+        "spotifyLink": "https://open.spotify.com/search/Roar%20Katy%20Perry",
+        "youtubeLink": "https://www.youtube.com/results?search_query=Roar%20Katy%20Perry"
+      },
+      {
+        "title": "Sunday Best",
+        "artist": "Surfaces",
+        "album": "Where the Light Is",
+        "genre": "Indie Pop",
+        "releaseYear": 2019,
+        "duration": "2:38",
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/9/9/4/0/994b97fefaa3ddc4c06d8893aabaa65b.mp3?hdnea=exp=1782136874~acl=/api/1/1/9/9/4/0/994b97fefaa3ddc4c06d8893aabaa65b.mp3*~data=user_id=0,application_id=42~hmac=302c1dab0558e96090d6426072a71a48d8188f8c9df60d8da9f742e7b95a62fe",
+        "albumArtwork": "https://cdn-images.dzcdn.net/images/cover/14e3710d70bf050ba0e84a1b5d3c4944/250x250-000000-80-0-0.jpg",
+        "deezerLink": "https://www.deezer.com/track/2493971081",
+        "spotifyLink": "https://open.spotify.com/search/Sunday%20Best%20Surfaces",
+        "youtubeLink": "https://www.youtube.com/results?search_query=Sunday%20Best%20Surfaces"
+      },
+      {
+        "title": "Unstoppable",
+        "artist": "Sia",
+        "album": "This Is Acting",
+        "genre": "Pop",
+        "releaseYear": 2016,
+        "duration": "3:37",
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/b/6/f/0/b6fd78bfc5ececa8a18b07f54cbfb6f9.mp3?hdnea=exp=1782136874~acl=/api/1/1/b/6/f/0/b6fd78bfc5ececa8a18b07f54cbfb6f9.mp3*~data=user_id=0,application_id=42~hmac=7b1b8fee3078bb3ed469bbb60599fdb87e9915190755c4ae02196c6aaf2a5899",
+        "albumArtwork": "https://cdn-images.dzcdn.net/images/cover/5a86a131864e4bfdda6c45c31fdbee3d/250x250-000000-80-0-0.jpg",
+        "deezerLink": "https://www.deezer.com/track/117708444",
+        "spotifyLink": "https://open.spotify.com/search/Unstoppable%20Sia",
+        "youtubeLink": "https://www.youtube.com/results?search_query=Unstoppable%20Sia"
+      },
+      {
+        "title": "Good Time",
+        "artist": "Owl City & Carly Rae Jepsen",
+        "album": "The Midsummer Station",
+        "genre": "Synth-Pop",
+        "releaseYear": 2012,
+        "duration": "3:26",
+        "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/e/6/0/0/e6058714e4015c2e5d20452bc73a5eb0.mp3?hdnea=exp=1782136874~acl=/api/1/1/e/6/0/0/e6058714e4015c2e5d20452bc73a5eb0.mp3*~data=user_id=0,application_id=42~hmac=a3e85fa89f68150acf580210c161ab9cf0df114ad201fcfec221665344047196",
+        "albumArtwork": "https://cdn-images.dzcdn.net/images/cover/7e6ddcd830f7a041f606d7b29864be2e/250x250-000000-80-0-0.jpg",
+        "deezerLink": "https://www.deezer.com/track/53825251",
+        "spotifyLink": "https://open.spotify.com/search/Good%20Time%20Owl%20City%20%26%20Carly%20Rae%20Jepsen",
+        "youtubeLink": "https://www.youtube.com/results?search_query=Good%20Time%20Owl%20City%20%26%20Carly%20Rae%20Jepsen"
+      }
+    ],
+    "tips": [
+      "Open the window and let the sunlight in while playing this playlist.",
+      "Sing along as loud as you can — it releases happy chemicals in the brain!"
+    ],
+    "createdAt": "2026-06-22T13:45:45.119Z"
+  },
+  {
+    "id": "6e5437c5-5066-4dca-9e57-df20ce81fbf1",
+    "mood": "happy",
+    "name": "Vibrant Daydreams",
+    "description": "A handpicked collection of upbeat tunes to boost your mood and keep you smiling all day long.",
+    "coverGradient": "from-amber-400 to-orange-500",
+    "songs": [
+      {
+        "title": "I Got You (I Feel Good)",
+        "artist": "James Brown",
+        "album": "I Got You (I Feel Good)",
+        "genre": "Soul/Funk",
+        "releaseYear": 1965,
+        "duration": "2:47"
+      },
+      {
+        "title": "Good Vibrations",
+        "artist": "The Beach Boys",
+        "album": "Smiley Smile",
+        "genre": "Psychedelic Pop",
+        "releaseYear": 1966,
+        "duration": "3:35"
+      },
+      {
+        "title": "Sugar",
+        "artist": "Maroon 5",
+        "album": "V",
+        "genre": "Pop/Funk",
+        "releaseYear": 2014,
+        "duration": "3:55"
+      },
+      {
+        "title": "Dynamite",
+        "artist": "BTS",
+        "album": "Be",
+        "genre": "Disco-Pop",
+        "releaseYear": 2020,
+        "duration": "3:19"
+      },
+      {
+        "title": "Don't Stop Me Now",
+        "artist": "Queen",
+        "album": "Jazz",
+        "genre": "Rock",
+        "releaseYear": 1978,
+        "duration": "3:29"
+      }
+    ],
+    "tips": [
+      "Open the window and let the sunlight in while playing this playlist.",
+      "Sing along as loud as you can — it releases happy chemicals in the brain!"
+    ],
+    "createdAt": "2026-06-22T10:58:24.771Z"
+  },
+  {
+    "id": "663b624e-1f8b-4c9c-974a-397448fbb285",
+    "mood": "motivated",
+    "name": "Chasing Greatness",
+    "description": "A powerful soundtrack for builders, dreamers, and high achievers who refuse to stop.",
+    "coverGradient": "from-purple-600 to-pink-500",
+    "songs": [
+      {
+        "title": "Thunder",
+        "artist": "Imagine Dragons",
+        "album": "Evolve",
+        "genre": "Pop Rock",
+        "releaseYear": 2017,
+        "duration": "3:07"
+      },
+      {
+        "title": "Till I Collapse",
+        "artist": "Eminem",
+        "album": "The Eminem Show",
+        "genre": "Hip Hop",
+        "releaseYear": 2002,
+        "duration": "4:57"
+      },
+      {
+        "title": "Hall of Fame",
+        "artist": "The Script ft. will.i.am",
+        "album": "3",
+        "genre": "Pop Rock",
+        "releaseYear": 2012,
+        "duration": "3:22"
+      },
+      {
+        "title": "Eye of the Tiger",
+        "artist": "Survivor",
+        "album": "Eye of the Tiger",
+        "genre": "Rock",
+        "releaseYear": 1982,
+        "duration": "4:04"
+      },
+      {
+        "title": "All I Do Is Win",
+        "artist": "DJ Khaled ft. T-Pain, Ludacris, Snoop Dogg, Rick Ross",
+        "album": "Victory",
+        "genre": "Hip Hop",
+        "releaseYear": 2010,
+        "duration": "3:49"
+      }
+    ],
+    "tips": [
+      "Write down your top 3 goals for the day before hitting play.",
+      "Listen during your morning commute to set a productive, ambitious tone."
+    ],
+    "createdAt": "2026-06-22T10:56:56.947Z"
+  },
+  {
+    "id": "ed6fccc9-63a5-4d6f-9738-015662393d83",
+    "mood": "romantic",
+    "name": "Warm Embrace",
+    "description": "Soft grooves and lyrical declarations of love to melt your heart and set the mood.",
+    "coverGradient": "from-pink-500 to-rose-600",
+    "songs": [
+      {
+        "title": "Perfect",
+        "artist": "Ed Sheeran",
+        "album": "Divide",
+        "genre": "Pop",
+        "releaseYear": 2017,
+        "duration": "4:23"
+      },
+      {
+        "title": "You Are the Best Thing",
+        "artist": "Ray LaMontagne",
+        "album": "Gossip in the Grain",
+        "genre": "Folk/Soul",
+        "releaseYear": 2008,
+        "duration": "3:53"
+      },
+      {
+        "title": "Make You Feel My Love",
+        "artist": "Adele",
+        "album": "19",
+        "genre": "Pop Ballad",
+        "releaseYear": 2008,
+        "duration": "3:32"
+      },
+      {
+        "title": "Die With A Smile",
+        "artist": "Bruno Mars & Lady Gaga",
+        "album": "Die With A Smile - Single",
+        "genre": "Pop Ballad",
+        "releaseYear": 2024,
+        "duration": "4:11"
+      },
+      {
+        "title": "Adore You",
+        "artist": "Harry Styles",
+        "album": "Fine Line",
+        "genre": "Pop Rock",
+        "releaseYear": 2019,
+        "duration": "3:27"
+      }
+    ],
+    "tips": [
+      "Take a moment to dance slowly in the living room with your partner.",
+      "Share this playlist directly with someone special in your life."
+    ],
+    "createdAt": "2026-06-22T10:34:17.728Z"
+  },
+  {
+    "id": "e561ad57-c5d3-47dc-b94d-270187e3d2b3",
+    "mood": "focused",
+    "name": "Cognitive Shift",
+    "description": "Minimalist instrumentals and post-rock masterpieces designed to keep you locked in.",
+    "coverGradient": "from-cyan-700 to-indigo-800",
+    "songs": [
+      {
+        "title": "Svefn-g-englar",
+        "artist": "Sigur Rós",
+        "album": "Ágætis byrjun",
+        "genre": "Post-Rock",
+        "releaseYear": 1999,
+        "duration": "10:04"
+      },
+      {
+        "title": "Flight from the City",
+        "artist": "Jóhann Jóhannsson",
+        "album": "Orphée",
+        "genre": "Ambient/Classical",
+        "releaseYear": 2016,
+        "duration": "6:31"
+      },
+      {
+        "title": "Experience",
+        "artist": "Ludovico Einaudi",
+        "album": "In a Time Lapse",
+        "genre": "Modern Classical",
+        "releaseYear": 2013,
+        "duration": "5:15"
+      },
+      {
+        "title": "Lux Aeterna",
+        "artist": "Clint Mansell",
+        "album": "Requiem for a Dream",
+        "genre": "Orchestral",
+        "releaseYear": 2000,
+        "duration": "3:54"
+      },
+      {
+        "title": "Your Hand in Mine",
+        "artist": "Explosions in the Sky",
+        "album": "The Earth Is Not a Cold Dead Place",
+        "genre": "Post-Rock",
+        "releaseYear": 2003,
+        "duration": "8:17"
+      }
+    ],
+    "tips": [
+      "Keep a clean workspace to reduce visual clutter alongside the audio focus.",
+      "Put your phone in another room or on 'Do Not Disturb' mode."
+    ],
+    "createdAt": "2026-06-22T10:34:17.654Z"
+  },
+  {
+    "id": "d4f8850d-cbe2-49d8-8933-d4a44d6eacd7",
+    "mood": "energetic",
+    "name": "Beast Mode",
+    "description": "Unleash your full potential with this explosive mix of high-energy beats.",
+    "coverGradient": "from-orange-500 to-red-600",
+    "songs": [
+      {
+        "title": "Levels",
+        "artist": "Avicii",
+        "album": "Levels",
+        "genre": "House",
+        "releaseYear": 2011,
+        "duration": "3:19"
+      },
+      {
+        "title": "Lose Yourself",
+        "artist": "Eminem",
+        "album": "8 Mile OST",
+        "genre": "Hip Hop",
+        "releaseYear": 2002,
+        "duration": "5:26"
+      },
+      {
+        "title": "Don't Start Now",
+        "artist": "Dua Lipa",
+        "album": "Future Nostalgia",
+        "genre": "Nu-Disco",
+        "releaseYear": 2019,
+        "duration": "3:03"
+      },
+      {
+        "title": "One More Time",
+        "artist": "Daft Punk",
+        "album": "Discovery",
+        "genre": "House/Electronic",
+        "releaseYear": 2000,
+        "duration": "5:20"
+      },
+      {
+        "title": "Harder, Better, Faster, Stronger",
+        "artist": "Daft Punk",
+        "album": "Discovery",
+        "genre": "House/Electronic",
+        "releaseYear": 2001,
+        "duration": "3:44"
+      }
+    ],
+    "tips": [
+      "Stand up and do some quick stretches or jumping jacks while listening!",
+      "Use this to break through the afternoon slump instead of reaching for a third coffee."
+    ],
+    "createdAt": "2026-06-22T10:34:17.640Z"
+  },
+  {
+    "id": "c214ddda-f1fa-4669-86fd-d0ec91cad08b",
+    "mood": "sad",
+    "name": "Quiet Tears",
+    "description": "A soothing safe space of introspective and emotionally resonant melodies.",
+    "coverGradient": "from-blue-600 to-indigo-900",
+    "songs": [
+      {
+        "title": "Say Something",
+        "artist": "A Great Big World & Christina Aguilera",
+        "album": "Is There Anybody Out There?",
+        "genre": "Pop Ballad",
+        "releaseYear": 2013,
+        "duration": "3:49"
+      },
+      {
+        "title": "Creep",
+        "artist": "Radiohead",
+        "album": "Pablo Honey",
+        "genre": "Alternative Rock",
+        "releaseYear": 1992,
+        "duration": "3:56"
+      },
+      {
+        "title": "Someone Like You",
+        "artist": "Adele",
+        "album": "21",
+        "genre": "Pop/Soul",
+        "releaseYear": 2011,
+        "duration": "4:45"
+      },
+      {
+        "title": "When the Party's Over",
+        "artist": "Billie Eilish",
+        "album": "When We All Fall Asleep, Where Do We Go?",
+        "genre": "Avant-Pop",
+        "releaseYear": 2018,
+        "duration": "3:16"
+      },
+      {
+        "title": "Supermarket Flowers",
+        "artist": "Ed Sheeran",
+        "album": "Divide",
+        "genre": "Pop",
+        "releaseYear": 2017,
+        "duration": "3:41"
+      }
+    ],
+    "tips": [
+      "Listen with headphones on in a darkened room to fully absorb the depth of these tracks.",
+      "Grab a warm cup of tea and find a comfortable, quiet corner."
+    ],
+    "createdAt": "2026-06-22T10:34:17.605Z"
+  },
+  {
+    "id": "92e6696e-eabc-464b-932a-0f3205c4a2ed",
+    "mood": "happy",
+    "name": "Sunshine Melodies",
+    "description": "Inject some high-quality positivity into your day with these infectious feel-good rhythms.",
+    "coverGradient": "from-yellow-300 to-pink-500",
+    "songs": [
+      {
+        "title": "Mr. Blue Sky",
+        "artist": "Electric Light Orchestra",
+        "album": "Out of the Blue",
+        "genre": "Symphonic Rock",
+        "releaseYear": 1977,
+        "duration": "5:03"
+      },
+      {
+        "title": "Sunday Best",
+        "artist": "Surfaces",
+        "album": "Where the Light Is",
+        "genre": "Indie Pop",
+        "releaseYear": 2019,
+        "duration": "2:38"
+      },
+      {
+        "title": "Best Day of My Life",
+        "artist": "American Authors",
+        "album": "Oh, What a Life",
+        "genre": "Indie Pop",
+        "releaseYear": 2013,
+        "duration": "3:14"
+      },
+      {
+        "title": "September",
+        "artist": "Earth, Wind & Fire",
+        "album": "The Best of Earth, Wind & Fire, Vol. 1",
+        "genre": "Disco/Funk",
+        "releaseYear": 1978,
+        "duration": "3:35"
+      },
+      {
+        "title": "Don't Stop Me Now",
+        "artist": "Queen",
+        "album": "Jazz",
+        "genre": "Rock",
+        "releaseYear": 1978,
+        "duration": "3:29"
+      }
+    ],
+    "tips": [
+      "Open the window and let the sunlight in while playing this playlist.",
+      "Listen while going for a morning walk to supercharge your day."
+    ],
+    "createdAt": "2026-06-22T10:27:31.630Z"
+  }
+]
