@@ -362,7 +362,11 @@ const downloadSong = (req, res) => {
   res.header('Content-Disposition', `attachment; filename="song.mp3"`);
   res.header('Content-Type', 'audio/mpeg');
 
-  const ytDlpPath = path.join(__dirname, '..', 'yt-dlp.exe');
+  const isWindows = process.platform === 'win32';
+  const ytDlpPath = isWindows 
+    ? path.join(__dirname, '..', 'yt-dlp.exe') 
+    : 'yt-dlp';
+
   const url = `https://www.youtube.com/watch?v=${youtubeId}`;
 
   const ytDlp = spawn(ytDlpPath, [

@@ -32,6 +32,17 @@ function formatTime(secs) {
   return `${m}:${s.toString().padStart(2, '0')}`;
 }
 
+function parseDurationToSeconds(durationStr) {
+  if (!durationStr) return 240; // Default 4 minutes
+  const parts = durationStr.split(':').map(Number);
+  if (parts.length === 2) {
+    return parts[0] * 60 + parts[1];
+  } else if (parts.length === 3) {
+    return parts[0] * 3600 + parts[1] * 60 + parts[2];
+  }
+  return 240;
+}
+
 export default function NowPlayingModal({ song, isOpen, onClose }) {
   const [youtubeId, setYoutubeId] = useState(null);
   const [syncedLyrics, setSyncedLyrics] = useState(null);
@@ -44,6 +55,7 @@ export default function NowPlayingModal({ song, isOpen, onClose }) {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [downloadStatus, setDownloadStatus] = useState('idle'); // idle | downloading | done | error
+  const [downloadProgress, setDownloadProgress] = useState(0);
   const playerRef = useRef(null);
   const intervalRef = useRef(null);
   const lyricsContainerRef = useRef(null);
@@ -64,12 +76,14 @@ export default function NowPlayingModal({ song, isOpen, onClose }) {
       setCurrentTime(0);
       setDuration(0);
       setDownloadStatus('idle');
+      setDownloadProgress(0);
       playerRef.current = null;
       prevActiveLineRef.current = -1;
       if (intervalRef.current) clearInterval(intervalRef.current);
       
       // Fetch YouTube ID
-      fetch(`http://localhost:3001/api/youtube?title=${encodeURIComponent(song.title)}&artist=${encodeURIComponent(song.artist)}`)
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+      fetch(`${apiUrl}/api/youtube?title=${encodeURIComponent(song.title)}&artist=${encodeURIComponent(song.artist)}`)
         .then(res => res.json())
         .then(data => {
           if (data.youtubeId) setYoutubeId(data.youtubeId);
@@ -237,16 +251,40 @@ export default function NowPlayingModal({ song, isOpen, onClose }) {
   const handleDownload = async () => {
     if (!youtubeId || downloadStatus === 'downloading') return;
     setDownloadStatus('downloading');
+    setDownloadProgress(0);
     try {
-      const response = await fetch(`http://localhost:3001/api/download/${youtubeId}`);
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+      const response = await fetch(`${apiUrl}/api/download/${youtubeId}`);
       if (!response.ok) throw new Error('Download failed');
-      const blob = await response.blob();
+
+      // Estimate total size
+      const durationSecs = parseDurationToSeconds(song.duration);
+      const estimatedTotalBytes = durationSecs * 192000 / 8; // Estimate using 192 kbps bitrate
+
+      const reader = response.body.getReader();
+      const chunks = [];
+      let receivedBytes = 0;
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        chunks.push(value);
+        receivedBytes += value.length;
+        
+        // Calculate progress percentage, cap at 99% until complete
+        const pct = Math.min(99, Math.round((receivedBytes / estimatedTotalBytes) * 100));
+        setDownloadProgress(pct);
+      }
+
+      const blob = new Blob(chunks);
       await saveSongOffline({
         youtubeId,
         title: song.title,
         artist: song.artist,
         albumArtwork: song.albumArtwork
       }, blob);
+      
+      setDownloadProgress(100);
       setDownloadStatus('done');
     } catch (err) {
       console.error('Download error:', err);
@@ -363,7 +401,10 @@ export default function NowPlayingModal({ song, isOpen, onClose }) {
                     title={downloadStatus === 'done' ? 'Saved for offline!' : downloadStatus === 'error' ? 'Download failed' : 'Save for offline'}
                   >
                     {downloadStatus === 'downloading' ? (
-                      <Loader2 className="w-5 h-5 animate-spin" />
+                      <div className="flex flex-col items-center justify-center text-[10px] font-black text-purple-600 dark:text-purple-400">
+                        <Loader2 className="w-3.5 h-3.5 animate-spin mb-0.5" />
+                        <span>{downloadProgress}%</span>
+                      </div>
                     ) : downloadStatus === 'done' ? (
                       <Check className="w-5 h-5" />
                     ) : (

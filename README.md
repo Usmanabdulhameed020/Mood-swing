@@ -1,16 +1,52 @@
 # Mood Swing 🎵 | AI Mood Playlist Suggester
 
-Mood Swing is a premium, Spotify/Apple Music-inspired web application that utilizes intelligent local logic to curate personalized 5-song playlists matching your current mood. Complete with custom album artwork, listening tips, usage statistics, and local library savings, Mood Swing is built to showcase rich aesthetic design, smooth micro-animations, and clean, accessible code.
+Mood Swing is a premium, Spotify-inspired web application designed to match your current emotional state with the perfect soundtrack. Using intelligent mood mapping, the app instantly curates personalized playlists, complete with custom album artwork, listening tips, usage statistics, and offline library saving. 
 
 ---
 
-## 🚀 Features
+## 🎨 Visual Identity & Brand Logo
+Mood Swing features a custom-designed visual identity represented by the official logo: **a neon headphone band merging with a swinging music note**. 
+* The headphone arc represents the immersive soundscape.
+* The swinging note represents emotional dynamics and the rhythm of your feelings.
+* The motion trails indicate the swinging pendulum, showing the transition between different emotional states.
 
-*   **Intelligent Mood Suggestions**: Select from 10 distinct animated mood cards (😊 Happy, 😔 Sad, 😌 Relaxed, ⚡ Energetic, 🎯 Focused, ❤️ Romantic, 😴 Sleepy, 🔥 Motivated, 🌧️ Lonely, 🤩 Excited) to generate unique playlist names, custom descriptions, song lists, and tips.
-*   **Immersive Audio Loading**: Beautiful full-screen vinyl spinning animation and floating music notes displaying real-time preparation steps.
-*   **Rich Interactive Song Rows**: Highlighting title, artist, album, genre, release year, duration, and action buttons for copying detail, sharing, or liking.
-*   **Persistent Custom Theme**: Beautiful dark mode enabled by default, togglable to light mode, and stored locally in `localStorage`.
-*   **Saved Library & Search Filters**: Full-featured **History** and **Favorites** routes with instant search inputs and mood filters.
-*   **Statistics and Trends**: Visual analytics showing total created count, most selected mood, favorite mood, and a frequency distribution bar chart.
-*   **Action Actions**: Copy formatted playlist details directly, download a structured `.txt` file, or use the native Web Share API.
-*   **Download Page**: You can download a music and listen oflin later 
+---
+
+## 🚀 Key Features
+
+*   **Intelligent Mood Mapping**: Select from 10 distinct animated mood cards (😊 Happy, 😔 Sad, 😌 Relaxed, ⚡ Energetic, 🎯 Focused, ❤️ Romantic, 😴 Sleepy, 🔥 Motivated, 🌧️ Lonely, 🤩 Excited) to instantly generate unique playlists.
+*   **Immersive Listening Atmosphere**: Enjoy a beautifully designed player card with synchronized lyric highlighting and active sound progress.
+*   **Persistent Visual Themes**: Seamless light and dark mode toggles that align with your system preferences and remember your choice.
+*   **Saved Library & Search**: Full-featured **History** and **Favorites** hubs with instant search filters so you can revisit past moods and tracks.
+*   **Listening Trends & Analytics**: A detailed dashboard showcasing your total created playlists, most selected mood, favorite mood, and a beautiful weekly activity chart.
+*   **Sharing and Exporting**: Copy formatted playlist details to your clipboard, download a structured playlist text file, or share it directly using your system's native share menu.
+
+---
+
+## ⚡ Enhanced Playback & Download Systems
+
+We have upgraded the core user experience to make music listening and offline saving completely seamless:
+
+### 🎵 Continuous Music (Cross-Page Playback)
+Switch pages freely! Whether you are exploring new playlists, reviewing your statistics, checking your history, or managing your offline files, your music will **never stop playing**. The audio player persists across the entire application navigation.
+
+### 🛡️ Protected Player Backdrop
+No more accidental cancellations! The music card is protected. Tapping or clicking anywhere outside the player area will **not** close the player or interrupt your music. The player will only close when you explicitly press the cancel/close button.
+
+### 📥 Real-Time Download Progress
+When saving a track for offline listening, the download button changes dynamically to show a **percentage progress indicator (e.g., 45%)**. This gives you live feedback on the saving progress, turning into a green checkmark once the track is fully secured in your local library.
+
+### 📶 Dedicated Offline Library
+Go off the grid! The **Downloads** section houses all your saved tracks. You can play, pause, seek, and delete your offline songs with a custom player bar—even without an active internet connection.
+
+---
+
+## 🏃 How to Experience the App
+
+1.  **Launch the Music Database**: Ensure the backend database and API server are running.
+2.  **Launch the App**: Run the development server and open the web application.
+3.  **Start Listening**:
+    *   Choose a mood from the home screen.
+    *   Enjoy your custom playlist.
+    *   Hit the download button on any song to save it for offline use.
+    *   Navigate to the **Downloads** page to check out your offline collection!

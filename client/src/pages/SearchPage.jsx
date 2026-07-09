@@ -1,11 +1,12 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback, useContext } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, Music, AlertCircle } from 'lucide-react';
 import SongCard from '../components/playlist/SongCard';
 import LoadingSpinner from '../components/common/LoadingSpinner';
-import NowPlayingModal from '../components/playlist/NowPlayingModal';
+import { PlaylistContext } from '../context/PlaylistContext';
 
 export default function SearchPage() {
+  const { playOnlineSong } = useContext(PlaylistContext);
   const [query, setQuery] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
   const [songs, setSongs] = useState([]);
@@ -13,7 +14,6 @@ export default function SearchPage() {
   const [isFetchingMore, setIsFetchingMore] = useState(false);
   const [error, setError] = useState(null);
   const [offset, setOffset] = useState(0);
-  const [selectedSong, setSelectedSong] = useState(null);
 
   // Suggestions state
   const [suggestions, setSuggestions] = useState([]);
@@ -54,7 +54,7 @@ export default function SearchPage() {
     setIsFetchingSuggestions(true);
     debounceRef.current = setTimeout(async () => {
       try {
-        const BASE_URL = 'http://localhost:3001/api';
+        const BASE_URL = (import.meta.env.VITE_API_URL || 'http://localhost:3001') + '/api';
         const response = await fetch(`${BASE_URL}/search?q=${encodeURIComponent(q.trim())}&offset=0`);
         if (!response.ok) throw new Error('Failed');
         const data = await response.json();
@@ -76,7 +76,7 @@ export default function SearchPage() {
 
   const handleSuggestionClick = (song) => {
     setShowSuggestions(false);
-    setSelectedSong(song);
+    playOnlineSong(song);
   };
 
   const handleSuggestionSearch = (text) => {
@@ -95,7 +95,7 @@ export default function SearchPage() {
     }
     setError(null);
     try {
-      const BASE_URL = 'http://localhost:3001/api';
+      const BASE_URL = (import.meta.env.VITE_API_URL || 'http://localhost:3001') + '/api';
       const response = await fetch(`${BASE_URL}/search?q=${encodeURIComponent(q)}&offset=${currentOffset}`);
       if (!response.ok) {
         throw new Error('Failed to fetch songs');
@@ -261,7 +261,7 @@ export default function SearchPage() {
             
             <div className="flex flex-col gap-2">
               {songs.map((song, index) => (
-                <SongCard key={index + '-' + song.title + '-' + song.artist} song={song} index={index} onPlay={(s) => setSelectedSong(s)} />
+                <SongCard key={index + '-' + song.title + '-' + song.artist} song={song} index={index} onPlay={playOnlineSong} />
               ))}
             </div>
 
@@ -320,11 +320,6 @@ export default function SearchPage() {
         )}
       </div>
 
-      <NowPlayingModal 
-        song={selectedSong} 
-        isOpen={!!selectedSong} 
-        onClose={() => setSelectedSong(null)} 
-      />
     </div>
   );
 }

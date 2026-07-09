@@ -1,1 +1,76 @@
-[]
+[
+  {
+    "id": "e3db27d4-5029-4a4c-a3d0-b7a09e578ffe",
+    "mood": "sad",
+    "name": "Healing Scars",
+    "description": "A soothing safe space of introspective and emotionally resonant melodies.",
+    "coverGradient": "from-blue-600 to-indigo-900",
+    "songs": [
+      {
+        "title": "Sad (\"By Myself\" Demo 1999) [LPU Rarities]",
+        "artist": "LINKIN PARK",
+        "album": "Hybrid Theory (20th Anniversary Edition)",
+        "genre": "Hard Rock",
+        "releaseYear": 2000,
+        "duration": "1:08",
+        "albumArtwork": "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/d9/5f/35/d95f35e4-11bb-05d7-bb26-d65ce620d920/093624893219.jpg/500x500bb.jpg",
+        "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/45/ec/12/45ec1224-1c9f-a6ef-6827-ba2c7e8b2f40/mzaf_5667184053231279093.plus.aac.p.m4a",
+        "youtubeLink": null,
+        "spotifyLink": "https://open.spotify.com/search/Sad%20(%22By%20Myself%22%20Demo%201999)%20%5BLPU%20Rarities%5D%20LINKIN%20PARK"
+      },
+      {
+        "title": "Sad",
+        "artist": "Lemon Demon",
+        "album": "The FuMP, Vol. 54: November - December 2015",
+        "genre": "Pop",
+        "releaseYear": 2012,
+        "duration": "4:17",
+        "albumArtwork": "https://is1-ssl.mzstatic.com/image/thumb/Music69/v4/59/c4/55/59c455af-be6d-a8bd-332b-f5636ff17319/254387.jpg/500x500bb.jpg",
+        "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/6a/4a/dc/6a4adcfb-47a7-8050-b1bb-e1855e773a1c/mzaf_13223991954887046456.plus.aac.p.m4a",
+        "youtubeLink": null,
+        "spotifyLink": "https://open.spotify.com/search/Sad%20Lemon%20Demon"
+      },
+      {
+        "title": "SAD!",
+        "artist": "Lofi Fruits Music & Chill Fruits Music",
+        "album": "Lofi Music for Sleeping and Studying",
+        "genre": "Easy Listening",
+        "releaseYear": 2021,
+        "duration": "1:27",
+        "albumArtwork": "https://is1-ssl.mzstatic.com/image/thumb/Music126/v4/f3/cc/a1/f3cca19e-5d10-7f4e-7668-332dfc43033a/197338353332.jpg/500x500bb.jpg",
+        "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview126/v4/55/83/c3/5583c359-aba7-f6cc-40c5-09e27744df12/mzaf_15322838685128898946.plus.aac.p.m4a",
+        "youtubeLink": null,
+        "spotifyLink": "https://open.spotify.com/search/SAD!%20Lofi%20Fruits%20Music%20%26%20Chill%20Fruits%20Music"
+      },
+      {
+        "title": "Sad. (Lofi Chill Beat)",
+        "artist": "LoFi Hip Hop",
+        "album": "Lofi Hip Hop Radio",
+        "genre": "New Age",
+        "releaseYear": 2020,
+        "duration": "1:57",
+        "albumArtwork": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/cb/1a/67/cb1a6796-87b4-669e-dabc-b242e9a5e266/13232.jpg/500x500bb.jpg",
+        "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/db/85/26/db8526f5-8372-ae4f-237c-12872c1bea88/mzaf_5348263609548705438.plus.aac.p.m4a",
+        "youtubeLink": null,
+        "spotifyLink": "https://open.spotify.com/search/Sad.%20(Lofi%20Chill%20Beat)%20LoFi%20Hip%20Hop"
+      },
+      {
+        "title": "sad (stripped)",
+        "artist": "LANY",
+        "album": "mama's boy (deluxe)",
+        "genre": "Pop",
+        "releaseYear": 2021,
+        "duration": "2:56",
+        "albumArtwork": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/0a/da/17/0ada17e2-255a-1ed8-0eb5-c3d717540d5b/20UMGIM33837.rgb.jpg/500x500bb.jpg",
+        "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/55/a1/c0/55a1c05e-f3ab-a2ba-8107-4536610e26c0/mzaf_17999222556411896586.plus.aac.p.m4a",
+        "youtubeLink": null,
+        "spotifyLink": "https://open.spotify.com/search/sad%20(stripped)%20LANY"
+      }
+    ],
+    "tips": [
+      "Grab a warm cup of tea and find a comfortable, quiet corner.",
+      "Listen with headphones on in a darkened room to fully absorb the depth of these tracks."
+    ],
+    "createdAt": "2026-07-09T15:33:23.543Z"
+  }
+]

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { Menu, X, Music, Heart, History, BarChart3, Home, Search, Download } from 'lucide-react';
+import { Menu, X, Heart, History, BarChart3, Home, Search, Download } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 import MobileNav from './MobileNav';
 
@@ -19,8 +19,8 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 group">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-600 to-pink-500 flex items-center justify-center text-white shadow-md shadow-purple-500/20 group-hover:scale-105 transition-transform">
-            <Music className="w-5 h-5 animate-pulse" />
+          <div className="w-10 h-10 rounded-xl bg-white dark:bg-zinc-900/40 border border-slate-200/50 dark:border-zinc-800/50 flex items-center justify-center p-1.5 shadow-sm shadow-purple-500/5 group-hover:scale-105 transition-transform">
+            <img src="/favicon.svg" alt="Mood Swing Logo" className="w-full h-full object-contain animate-pulse" style={{ animationDuration: '3s' }} />
           </div>
           <span className="text-xl font-black bg-gradient-to-r from-purple-600 via-pink-500 to-amber-500 bg-clip-text text-transparent group-hover:opacity-90 transition-opacity">
             Mood Swing

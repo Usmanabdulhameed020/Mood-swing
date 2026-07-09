@@ -11,17 +11,23 @@
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#9333ea">
     <link rel="apple-touch-icon" href="/icons/icon-192.png">
-    <title>Mood Swing | AI Playlist Suggester</title>
+    <title>Mood Swing | Playlist Suggester</title>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
     <script>
+      // Auto-unregister service workers in development to prevent caching issues
       if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js')
-            .then(reg => console.log('SW registered:', reg.scope))
-            .catch(err => console.log('SW registration failed:', err));
+        navigator.serviceWorker.getRegistrations().then(registrations => {
+          for (let registration of registrations) {
+            registration.unregister().then(() => {
+              console.log('SW unregistered to prevent dev caching.');
+              caches.keys().then(names => {
+                for (let name of names) caches.delete(name);
+              });
+            });
+          }
         });
       }
     </script>

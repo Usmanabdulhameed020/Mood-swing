@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import SongCard from './SongCard';
-import NowPlayingModal from './NowPlayingModal';
+import { PlaylistContext } from '../../context/PlaylistContext';
 
 export default function SongList({ songs }) {
-  const [selectedSong, setSelectedSong] = useState(null);
+  const { playOnlineSong } = useContext(PlaylistContext);
 
   if (!songs || songs.length === 0) return null;
 
@@ -30,17 +30,11 @@ export default function SongList({ songs }) {
               key={`${song.title}-${index}`}
               song={song}
               index={index}
-              onPlay={(s) => setSelectedSong(s)}
+              onPlay={playOnlineSong}
             />
           ))}
         </div>
       </div>
-
-      <NowPlayingModal 
-        song={selectedSong} 
-        isOpen={!!selectedSong} 
-        onClose={() => setSelectedSong(null)} 
-      />
     </>
   );
 }
