@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { Menu, X, Music, Heart, History, BarChart3, Home } from 'lucide-react';
+import { Menu, X, Music, Heart, History, BarChart3, Home, Search, Download } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 import MobileNav from './MobileNav';
 
@@ -33,6 +33,10 @@ export default function Header() {
             <Home className="w-4 h-4" />
             Home
           </NavLink>
+          <NavLink to="/explore" className={activeStyle}>
+            <Search className="w-4 h-4" />
+            Explore
+          </NavLink>
           <NavLink to="/favorites" className={activeStyle}>
             <Heart className="w-4 h-4" />
             Favorites
@@ -44,6 +48,10 @@ export default function Header() {
           <NavLink to="/stats" className={activeStyle}>
             <BarChart3 className="w-4 h-4" />
             Stats
+          </NavLink>
+          <NavLink to="/downloads" className={activeStyle}>
+            <Download className="w-4 h-4" />
+            Downloads
           </NavLink>
         </nav>
 

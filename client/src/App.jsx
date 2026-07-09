@@ -11,6 +11,8 @@ const PlaylistPage = lazy(() => import('./pages/PlaylistPage'));
 const FavoritesPage = lazy(() => import('./pages/FavoritesPage'));
 const HistoryPage = lazy(() => import('./pages/HistoryPage'));
 const StatsPage = lazy(() => import('./pages/StatsPage'));
+const SearchPage = lazy(() => import('./pages/SearchPage'));
+const DownloadsPage = lazy(() => import('./pages/DownloadsPage'));
 
 // A clean suspense loading fallback
 function PageLoader() {
@@ -51,6 +53,16 @@ export default function App() {
             <Route path="stats" element={
               <Suspense fallback={<PageLoader />}>
                 <StatsPage />
+              </Suspense>
+            } />
+            <Route path="explore" element={
+              <Suspense fallback={<PageLoader />}>
+                <SearchPage />
+              </Suspense>
+            } />
+            <Route path="downloads" element={
+              <Suspense fallback={<PageLoader />}>
+                <DownloadsPage />
               </Suspense>
             } />
             {/* Redirect any bad routes back home */}

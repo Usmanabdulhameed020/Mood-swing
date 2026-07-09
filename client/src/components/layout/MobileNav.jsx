@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Home, Heart, History, BarChart3 } from 'lucide-react';
+import { Home, Heart, History, BarChart3, Search, Download } from 'lucide-react';
 
 export default function MobileNav({ isOpen, onClose }) {
   const activeStyle = ({ isActive }) =>
@@ -36,6 +36,10 @@ export default function MobileNav({ isOpen, onClose }) {
               <Home className="w-5 h-5" />
               Home
             </NavLink>
+            <NavLink to="/explore" className={activeStyle} onClick={onClose}>
+              <Search className="w-5 h-5" />
+              Explore
+            </NavLink>
             <NavLink to="/favorites" className={activeStyle} onClick={onClose}>
               <Heart className="w-5 h-5" />
               Favorites
@@ -47,6 +51,10 @@ export default function MobileNav({ isOpen, onClose }) {
             <NavLink to="/stats" className={activeStyle} onClick={onClose}>
               <BarChart3 className="w-5 h-5" />
               Stats
+            </NavLink>
+            <NavLink to="/downloads" className={activeStyle} onClick={onClose}>
+              <Download className="w-5 h-5" />
+              Downloads
             </NavLink>
           </motion.div>
         </>

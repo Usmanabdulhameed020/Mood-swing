@@ -1,4 +1,3 @@
-const songsData = require('../data/songs');
 const musicService = require('./musicService');
 
 const moodMetadata = {
@@ -204,6 +203,15 @@ const moodMetadata = {
   }
 };
 
+// Format duration from ms to mm:ss
+function formatDuration(ms) {
+  if (!ms) return "3:30";
+  const totalSeconds = Math.floor(ms / 1000);
+  const m = Math.floor(totalSeconds / 60);
+  const s = totalSeconds % 60;
+  return `${m}:${s.toString().padStart(2, '0')}`;
+}
+
 // Shuffle array helper
 function shuffleArray(array) {
   const arr = [...array];
@@ -214,106 +222,44 @@ function shuffleArray(array) {
   return arr;
 }
 
-// Generate playlist via OpenAI Chat Completion if key is available
-async function generateWithOpenAI(mood) {
-  const apiKey = process.env.OPENAI_API_KEY;
-  if (!apiKey) return null;
-
-  try {
-    const prompt = `You are a professional music curator. Generate a playlist matching the mood "${mood}".
-Return a JSON object containing a custom playlist name, description, exactly 5 real tracks with their artist, album, genre, releaseYear, duration (in MM:SS format), and 2 custom tips matching this mood.
-Respond ONLY with a valid JSON block containing no extra text or markdown formatting. The format should be:
-{
-  "name": "string",
-  "description": "string",
-  "songs": [
-    { "title": "string", "artist": "string", "album": "string", "genre": "string", "releaseYear": number, "duration": "string" }
-  ],
-  "tips": ["string", "string"]
-}`;
-
-    const response = await fetch("https://api.openai.com/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${apiKey}`
-      },
-      body: JSON.stringify({
-        model: "gpt-4o-mini",
-        messages: [{ role: "user", content: prompt }],
-        response_format: { type: "json_object" }
-      }),
-      signal: AbortSignal.timeout(10000) // 10 second timeout
-    });
-
-    if (!response.ok) {
-      throw new Error(`OpenAI API status ${response.status}`);
-    }
-
-    const data = await response.json();
-    const result = JSON.parse(data.choices[0].message.content);
-
-    // Validate structure
-    if (result.name && result.description && Array.isArray(result.songs) && result.songs.length === 5) {
-      return result;
-    }
-    throw new Error("Invalid playlist JSON structure returned by OpenAI");
-  } catch (err) {
-    console.error("OpenAI generation failed, falling back to local:", err.message);
-    return null;
-  }
-}
-
-// Local generation logic using weighted randomness and complementary moods
-function generateLocal(mood) {
+// Generate playlist via iTunes Search API dynamically
+async function generateLocal(mood) {
   const lowerMood = mood.toLowerCase();
   const metadata = moodMetadata[lowerMood] || moodMetadata.happy;
   
-  // Collect primary songs
-  let primarySongs = songsData[lowerMood] || songsData.happy;
-  
-  // Weighted shuffling: pull complementary songs with lower weight to expand candidate list
-  let candidatePool = [...primarySongs];
-  if (metadata.complementary) {
-    metadata.complementary.forEach(compMood => {
-      const compSongs = songsData[compMood] || [];
-      // Add complementary songs if they aren't already in the candidate list
-      compSongs.forEach(song => {
-        if (!candidatePool.some(s => s.title.toLowerCase() === song.title.toLowerCase())) {
-          // Add with 40% probability to make it randomly mixed
-          if (Math.random() < 0.4) {
-            candidatePool.push(song);
-          }
-        }
-      });
-    });
-  }
-
-  // Ensure we shuffle and take 5 unique songs
-  const shuffledPool = shuffleArray(candidatePool);
-  const selectedSongs = [];
-  const seenTitles = new Set();
-
-  for (const song of shuffledPool) {
-    const key = song.title.toLowerCase();
-    if (!seenTitles.has(key)) {
-      selectedSongs.push(song);
-      seenTitles.add(key);
-    }
-    if (selectedSongs.length === 5) break;
-  }
-
-  // Fallback if pool did not yield 5 (rare)
-  if (selectedSongs.length < 5) {
-    const defaultSongs = shuffleArray(songsData.happy);
-    for (const song of defaultSongs) {
-      if (selectedSongs.length === 5) break;
-      const key = song.title.toLowerCase();
+  let selectedSongs = [];
+  try {
+    const response = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(lowerMood)}&entity=song&limit=50`);
+    if (!response.ok) throw new Error("iTunes API error");
+    
+    const data = await response.json();
+    const tracks = data.results || [];
+    
+    const shuffledPool = shuffleArray(tracks);
+    const seenTitles = new Set();
+    
+    for (const track of shuffledPool) {
+      const key = track.trackName.toLowerCase();
       if (!seenTitles.has(key)) {
-        selectedSongs.push(song);
-        seenTitles.add(key);
+        // Only select tracks over 1 minute
+        if (track.trackTimeMillis && track.trackTimeMillis > 60000) {
+          selectedSongs.push({
+            title: track.trackName,
+            artist: track.artistName,
+            album: track.collectionName || "Single",
+            genre: track.primaryGenreName || "Pop",
+            releaseYear: track.releaseDate ? new Date(track.releaseDate).getFullYear() : new Date().getFullYear(),
+            duration: formatDuration(track.trackTimeMillis),
+            albumArtwork: track.artworkUrl100 ? track.artworkUrl100.replace('100x100bb', '500x500bb') : null,
+            previewUrl: track.previewUrl
+          });
+          seenTitles.add(key);
+        }
       }
+      if (selectedSongs.length === 5) break;
     }
+  } catch (error) {
+    console.error("iTunes fetch failed:", error);
   }
 
   // Pick random playlist details
@@ -334,34 +280,19 @@ const generatePlaylist = async (mood) => {
   const lowerMood = mood.toLowerCase();
   const metadata = moodMetadata[lowerMood] || moodMetadata.happy;
   
-  // 1. Generate core playlist details and 5 songs (using OpenAI or Local)
-  let playlistData = await generateWithOpenAI(lowerMood);
-  if (!playlistData) {
-    playlistData = generateLocal(lowerMood);
-  }
+  // 1. Generate core playlist details and 5 songs using iTunes Search
+  let playlistData = await generateLocal(lowerMood);
 
   // 2. Assign cover gradient
   const coverGradient = metadata.gradients[Math.floor(Math.random() * metadata.gradients.length)];
 
-  // 3. Enrich each song async with real Deezer metadata & links
-  const enrichedSongs = await Promise.all(
-    playlistData.songs.map(async (song) => {
-      const enriched = await musicService.searchSongMetadata(song.title, song.artist);
-      return {
-        title: song.title,
-        artist: song.artist,
-        album: song.album || "Single",
-        genre: song.genre || "Pop",
-        releaseYear: song.releaseYear || new Date().getFullYear(),
-        duration: song.duration || "3:30",
-        previewUrl: enriched.previewUrl,
-        albumArtwork: enriched.albumArtwork,
-        deezerLink: enriched.deezerLink,
-        spotifyLink: enriched.spotifyLink,
-        youtubeLink: enriched.youtubeLink
-      };
-    })
-  );
+  // 3. Keep iTunes direct preview URLs for instant playback
+  const enrichedSongs = playlistData.songs.map(song => ({
+    ...song,
+    previewUrl: song.previewUrl,
+    youtubeLink: null,
+    spotifyLink: `https://open.spotify.com/search/${encodeURIComponent(song.title + ' ' + song.artist)}`
+  }));
 
   return {
     name: playlistData.name,

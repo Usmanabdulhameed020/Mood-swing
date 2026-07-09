@@ -6,6 +6,9 @@ const playlistController = require('../controllers/playlistController');
 router.post('/playlists/generate', playlistController.generatePlaylist);
 router.get('/history', playlistController.getHistory);
 router.get('/statistics', playlistController.getStats);
+router.get('/search', playlistController.searchSongs);
+router.get('/youtube', playlistController.getYoutubeId);
+router.get('/download/:youtubeId', playlistController.downloadSong);
 
 // Legacy fallback routes for client robustness
 router.post('/generate', playlistController.generatePlaylist);

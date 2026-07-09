@@ -4,6 +4,10 @@ const aiService = require('../services/aiService');
 const storageService = require('../services/storageService');
 const PlaylistModel = require('../models/Playlist');
 const FavoriteModel = require('../models/Favorite');
+const musicService = require('../services/musicService');
+const { spawn } = require('child_process');
+const path = require('path');
+const ytdl = require('@distube/ytdl-core');
 
 const isDbConnected = () => mongoose.connection.readyState === 1;
 
@@ -279,8 +283,115 @@ const getStats = async (req, res) => {
   }
 };
 
+const searchSongs = async (req, res) => {
+  try {
+    const { q, offset = 0 } = req.query;
+    if (!q) {
+      return res.status(400).json({ error: 'Search query is required' });
+    }
+
+    const response = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(q)}&entity=song&limit=20&offset=${offset}`);
+    if (!response.ok) throw new Error("iTunes API error");
+    
+    const data = await response.json();
+    const tracks = data.results || [];
+    
+    const selectedSongs = [];
+    const seenTitles = new Set();
+    
+    const formatDuration = (ms) => {
+      if (!ms) return "3:30";
+      const totalSeconds = Math.floor(ms / 1000);
+      const m = Math.floor(totalSeconds / 60);
+      const s = totalSeconds % 60;
+      return `${m}:${s.toString().padStart(2, '0')}`;
+    };
+
+    for (const track of tracks) {
+      const key = track.trackName.toLowerCase();
+      if (!seenTitles.has(key)) {
+        if (track.trackTimeMillis && track.trackTimeMillis > 60000) {
+          selectedSongs.push({
+            title: track.trackName,
+            artist: track.artistName,
+            album: track.collectionName || "Single",
+            genre: track.primaryGenreName || "Pop",
+            releaseYear: track.releaseDate ? new Date(track.releaseDate).getFullYear() : new Date().getFullYear(),
+            duration: formatDuration(track.trackTimeMillis),
+            albumArtwork: track.artworkUrl100 ? track.artworkUrl100.replace('100x100bb', '500x500bb') : null,
+            previewUrl: track.previewUrl
+          });
+          seenTitles.add(key);
+        }
+      }
+      if (selectedSongs.length === 12) break; // Return up to 12 results per batch
+    }
+
+    const enrichedSongs = selectedSongs.map(song => ({
+      ...song,
+      previewUrl: song.previewUrl,
+      youtubeLink: null,
+      spotifyLink: `https://open.spotify.com/search/${encodeURIComponent(song.title + ' ' + song.artist)}`
+    }));
+
+    res.status(200).json(enrichedSongs);
+  } catch (error) {
+    console.error('Error searching songs:', error);
+    res.status(500).json({ error: 'Failed to search songs', message: error.message });
+  }
+};
+
+const getYoutubeId = async (req, res) => {
+  try {
+    const { title, artist } = req.query;
+    if (!title || !artist) {
+      return res.status(400).json({ error: 'Title and artist are required' });
+    }
+    const enriched = await musicService.searchSongMetadata(title, artist);
+    res.status(200).json({ youtubeId: enriched.youtubeId });
+  } catch (error) {
+    console.error('Error fetching youtube ID:', error);
+    res.status(500).json({ error: 'Failed to fetch youtube ID', message: error.message });
+  }
+};
+
+const downloadSong = (req, res) => {
+  const { youtubeId } = req.params;
+  if (!youtubeId) return res.status(400).json({ error: 'YouTube ID required' });
+
+  res.header('Content-Disposition', `attachment; filename="song.mp3"`);
+  res.header('Content-Type', 'audio/mpeg');
+
+  const ytDlpPath = path.join(__dirname, '..', 'yt-dlp.exe');
+  const url = `https://www.youtube.com/watch?v=${youtubeId}`;
+
+  const ytDlp = spawn(ytDlpPath, [
+    url,
+    '-x', // extract audio
+    '--audio-format', 'mp3',
+    '--audio-quality', '0',
+    '-o', '-' // output to stdout
+  ]);
+
+  ytDlp.stdout.pipe(res);
+
+  ytDlp.stderr.on('data', (data) => {
+    console.error(`yt-dlp stderr: ${data}`);
+  });
+
+  ytDlp.on('close', (code) => {
+    if (code !== 0) {
+      console.error(`yt-dlp process exited with code ${code}`);
+      if (!res.headersSent) res.status(500).end();
+    }
+  });
+};
+
 module.exports = {
   generatePlaylist,
   getHistory,
-  getStats
+  getStats,
+  searchSongs,
+  getYoutubeId,
+  downloadSong
 };

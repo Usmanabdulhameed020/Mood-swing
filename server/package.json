@@ -12,11 +12,16 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "@distube/ytdl-core": "^4.16.12",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "mongodb": "^7.3.0",
     "mongoose": "^9.7.1",
-    "uuid": "^14.0.1"
+    "play-dl": "^1.9.7",
+    "uuid": "^14.0.1",
+    "youtube-ext": "^1.1.25",
+    "yt-search": "^2.13.1",
+    "yt-stream": "^1.7.4"
   }
 }
