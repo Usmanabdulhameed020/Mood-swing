@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect, useCallback, useRef } from 'react';
 import { api } from '../utils/api';
+import { getOfflineSongs } from '../utils/offlineDb';
 
 export const PlaylistContext = createContext();
 
@@ -26,8 +27,12 @@ export const PlaylistProvider = ({ children }) => {
   const [activeTrackUrl, setActiveTrackUrl] = useState(null);
 
   // Global Online Playback State
+  const [onlinePlayerRef, setOnlinePlayerRef] = useState(null);
   const [currentOnlineSong, setCurrentOnlineSong] = useState(null);
   const [isOnlinePlayerOpen, setIsOnlinePlayerOpen] = useState(false);
+  const [isOnlinePlaying, setIsOnlinePlaying] = useState(false);
+  const [onlineCurrentTime, setOnlineCurrentTime] = useState(0);
+  const [onlineDuration, setOnlineDuration] = useState(0);
 
   // Global Offline Playback State
   const [currentOfflineSong, setCurrentOfflineSong] = useState(null);
@@ -42,42 +47,7 @@ export const PlaylistProvider = ({ children }) => {
     audioRef.current = new Audio();
   }
 
-  // Handle offline audio event listeners
-  useEffect(() => {
-    const audio = audioRef.current;
-    if (!audio) return;
-
-    const handleTimeUpdate = () => {
-      setOfflineCurrentTime(audio.currentTime);
-    };
-    const handleDurationChange = () => {
-      setOfflineDuration(audio.duration || 0);
-    };
-    const handleEnded = () => {
-      setIsOfflinePlaying(false);
-    };
-
-    audio.addEventListener('timeupdate', handleTimeUpdate);
-    audio.addEventListener('durationchange', handleDurationChange);
-    audio.addEventListener('ended', handleEnded);
-
-    return () => {
-      audio.removeEventListener('timeupdate', handleTimeUpdate);
-      audio.removeEventListener('durationchange', handleDurationChange);
-      audio.removeEventListener('ended', handleEnded);
-    };
-  }, []);
-
-  // Cleanup object URL on unmount
-  useEffect(() => {
-    return () => {
-      if (objectUrlRef.current) {
-        URL.revokeObjectURL(objectUrlRef.current);
-      }
-    };
-  }, []);
-
-  // Playback Control Functions
+  // Playback Control Functions (Offline)
   const playOfflineSong = useCallback((song) => {
     // Pause online player if playing
     setIsOnlinePlayerOpen(false);
@@ -156,6 +126,58 @@ export const PlaylistProvider = ({ children }) => {
     setOfflineDuration(0);
   }, []);
 
+  const playNextOfflineSong = useCallback(async () => {
+    try {
+      const savedSongs = await getOfflineSongs();
+      if (!savedSongs || savedSongs.length === 0 || !currentOfflineSong) return;
+      const currentIndex = savedSongs.findIndex(s => s.id === currentOfflineSong.id);
+      if (currentIndex !== -1 && currentIndex < savedSongs.length - 1) {
+        playOfflineSong(savedSongs[currentIndex + 1]);
+      } else {
+        stopOfflinePlayback();
+      }
+    } catch (err) {
+      console.error("Failed to play next offline song:", err);
+    }
+  }, [currentOfflineSong, playOfflineSong, stopOfflinePlayback]);
+
+  // Handle offline audio event listeners
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    const handleTimeUpdate = () => {
+      setOfflineCurrentTime(audio.currentTime);
+    };
+    const handleDurationChange = () => {
+      setOfflineDuration(audio.duration || 0);
+    };
+    const handleEnded = () => {
+      setIsOfflinePlaying(false);
+      playNextOfflineSong();
+    };
+
+    audio.addEventListener('timeupdate', handleTimeUpdate);
+    audio.addEventListener('durationchange', handleDurationChange);
+    audio.addEventListener('ended', handleEnded);
+
+    return () => {
+      audio.removeEventListener('timeupdate', handleTimeUpdate);
+      audio.removeEventListener('durationchange', handleDurationChange);
+      audio.removeEventListener('ended', handleEnded);
+    };
+  }, [playNextOfflineSong]);
+
+  // Cleanup object URL on unmount
+  useEffect(() => {
+    return () => {
+      if (objectUrlRef.current) {
+        URL.revokeObjectURL(objectUrlRef.current);
+      }
+    };
+  }, []);
+
+  // Playback Control Functions (Online)
   const playOnlineSong = useCallback((song) => {
     // Stop offline playback
     const audio = audioRef.current;
@@ -164,6 +186,11 @@ export const PlaylistProvider = ({ children }) => {
     }
     setIsOfflinePlaying(false);
 
+    // If starting a new song, reset context states
+    setOnlineCurrentTime(0);
+    setOnlineDuration(0);
+    setIsOnlinePlaying(false);
+
     setCurrentOnlineSong(song);
     setIsOnlinePlayerOpen(true);
   }, []);
@@ -171,6 +198,61 @@ export const PlaylistProvider = ({ children }) => {
   const closeOnlinePlayer = useCallback(() => {
     setIsOnlinePlayerOpen(false);
   }, []);
+
+  const toggleOnlinePlayPause = useCallback(() => {
+    if (!onlinePlayerRef) return;
+    try {
+      const state = onlinePlayerRef.getPlayerState();
+      if (state === 1) { // playing
+        onlinePlayerRef.pauseVideo();
+        setIsOnlinePlaying(false);
+      } else {
+        onlinePlayerRef.playVideo();
+        setIsOnlinePlaying(true);
+      }
+    } catch (e) {
+      console.error("Error toggling online playback:", e);
+    }
+  }, [onlinePlayerRef]);
+
+  const seekOnline = useCallback((time) => {
+    if (!onlinePlayerRef) return;
+    try {
+      onlinePlayerRef.seekTo(time, true);
+      setOnlineCurrentTime(time);
+    } catch (e) {
+      console.error("Error seeking online playback:", e);
+    }
+  }, [onlinePlayerRef]);
+
+  const stopOnlinePlayback = useCallback(() => {
+    if (onlinePlayerRef) {
+      try {
+        onlinePlayerRef.stopVideo();
+      } catch (e) {}
+    }
+    setOnlinePlayerRef(null);
+    setCurrentOnlineSong(null);
+    setIsOnlinePlayerOpen(false);
+    setIsOnlinePlaying(false);
+    setOnlineCurrentTime(0);
+    setOnlineDuration(0);
+  }, [onlinePlayerRef]);
+
+  const playNextOnlineSong = useCallback(() => {
+    if (!currentPlaylist || !currentPlaylist.songs || !currentOnlineSong) return;
+
+    const currentIndex = currentPlaylist.songs.findIndex(
+      s => s.title === currentOnlineSong.title && s.artist === currentOnlineSong.artist
+    );
+
+    if (currentIndex !== -1 && currentIndex < currentPlaylist.songs.length - 1) {
+      const nextSong = currentPlaylist.songs[currentIndex + 1];
+      playOnlineSong(nextSong);
+    } else {
+      stopOnlinePlayback();
+    }
+  }, [currentPlaylist, currentOnlineSong, playOnlineSong, stopOnlinePlayback]);
 
   // Persistence of selected mood
   useEffect(() => {
@@ -308,7 +390,19 @@ export const PlaylistProvider = ({ children }) => {
         seekOffline,
         stopOfflinePlayback,
         playOnlineSong,
-        closeOnlinePlayer
+        closeOnlinePlayer,
+        onlinePlayerRef,
+        setOnlinePlayerRef,
+        isOnlinePlaying,
+        setIsOnlinePlaying,
+        onlineCurrentTime,
+        setOnlineCurrentTime,
+        onlineDuration,
+        setOnlineDuration,
+        toggleOnlinePlayPause,
+        seekOnline,
+        stopOnlinePlayback,
+        playNextOnlineSong
       }}
     >
       {children}

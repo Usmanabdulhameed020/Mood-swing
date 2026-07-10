@@ -19,7 +19,14 @@ export default function Layout() {
   const {
     currentOnlineSong,
     isOnlinePlayerOpen,
+    setIsOnlinePlayerOpen,
     closeOnlinePlayer,
+    isOnlinePlaying,
+    onlineCurrentTime,
+    onlineDuration,
+    toggleOnlinePlayPause,
+    seekOnline,
+    stopOnlinePlayback,
     currentOfflineSong,
     isOfflinePlaying,
     offlineCurrentTime,
@@ -29,7 +36,7 @@ export default function Layout() {
     stopOfflinePlayback
   } = useContext(PlaylistContext);
 
-  const handleSeek = (e) => {
+  const handleSeekOffline = (e) => {
     if (!offlineDuration) return;
     const bar = e.currentTarget;
     const rect = bar.getBoundingClientRect();
@@ -37,7 +44,16 @@ export default function Layout() {
     seekOffline(ratio * offlineDuration);
   };
 
-  const progress = offlineDuration > 0 ? (offlineCurrentTime / offlineDuration) * 100 : 0;
+  const handleSeekOnline = (e) => {
+    if (!onlineDuration) return;
+    const bar = e.currentTarget;
+    const rect = bar.getBoundingClientRect();
+    const ratio = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+    seekOnline(ratio * onlineDuration);
+  };
+
+  const offlineProgress = offlineDuration > 0 ? (offlineCurrentTime / offlineDuration) * 100 : 0;
+  const onlineProgress = onlineDuration > 0 ? (onlineCurrentTime / onlineDuration) * 100 : 0;
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-zinc-950 text-slate-900 dark:text-zinc-50 flex flex-col font-sans transition-colors duration-300 relative overflow-x-hidden">
@@ -82,12 +98,12 @@ export default function Layout() {
             <div className="max-w-4xl mx-auto px-4 py-3">
               {/* Progress bar at top of player */}
               <div
-                onClick={handleSeek}
+                onClick={handleSeekOffline}
                 className="w-full h-1.5 bg-slate-200 dark:bg-zinc-800 rounded-full cursor-pointer mb-3 group relative"
               >
                 <div
                   className="h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full transition-[width] duration-100 relative"
-                  style={{ width: `${progress}%` }}
+                  style={{ width: `${offlineProgress}%` }}
                 >
                   <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 bg-white rounded-full shadow border-2 border-purple-500 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
@@ -131,6 +147,83 @@ export default function Layout() {
                 {/* Close */}
                 <button
                   onClick={stopOfflinePlayback}
+                  className="p-2 rounded-full text-slate-400 hover:text-slate-600 dark:text-zinc-500 dark:hover:text-zinc-300 cursor-pointer"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Global Bottom Online Player Bar */}
+      <AnimatePresence>
+        {currentOnlineSong && !isOnlinePlayerOpen && (
+          <motion.div
+            initial={{ y: 100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 100, opacity: 0 }}
+            className="fixed bottom-0 left-0 right-0 z-40 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-lg border-t border-slate-200 dark:border-zinc-800 shadow-2xl shadow-black/10"
+          >
+            <div className="max-w-4xl mx-auto px-4 py-3">
+              {/* Progress bar at top of player */}
+              <div
+                onClick={handleSeekOnline}
+                className="w-full h-1.5 bg-slate-200 dark:bg-zinc-800 rounded-full cursor-pointer mb-3 group relative"
+              >
+                <div
+                  className="h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full transition-[width] duration-100 relative"
+                  style={{ width: `${onlineProgress}%` }}
+                >
+                  <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 bg-white rounded-full shadow border-2 border-purple-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+                </div>
+              </div>
+
+              <div className="flex items-center gap-4">
+                {/* Album art (Click to maximize) */}
+                <div 
+                  onClick={() => setIsOnlinePlayerOpen(true)}
+                  className="w-12 h-12 rounded-xl overflow-hidden flex-shrink-0 shadow-md cursor-pointer hover:scale-105 transition-transform"
+                >
+                  {currentOnlineSong.albumArtwork ? (
+                    <img src={currentOnlineSong.albumArtwork} alt={currentOnlineSong.title} className="w-full h-full object-cover" />
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-purple-600 to-pink-500 flex items-center justify-center">
+                      <Music className="w-5 h-5 text-white/60" />
+                    </div>
+                  )}
+                </div>
+
+                {/* Song info (Click to maximize) */}
+                <div 
+                  onClick={() => setIsOnlinePlayerOpen(true)}
+                  className="flex-grow min-w-0 cursor-pointer"
+                >
+                  <h4 className="font-bold text-sm text-slate-900 dark:text-white truncate hover:text-purple-600 dark:hover:text-purple-400 transition-colors">{currentOnlineSong.title}</h4>
+                  <p className="text-xs text-slate-500 dark:text-zinc-400 truncate">{currentOnlineSong.artist}</p>
+                </div>
+
+                {/* Time */}
+                <div className="text-xs font-bold text-slate-400 dark:text-zinc-500 hidden sm:block">
+                  {formatTime(onlineCurrentTime)} / {formatTime(onlineDuration)}
+                </div>
+
+                {/* Play/Pause */}
+                <button
+                  onClick={toggleOnlinePlayPause}
+                  className="w-12 h-12 rounded-full bg-purple-600 hover:bg-purple-700 text-white flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-all cursor-pointer"
+                >
+                  {isOnlinePlaying ? (
+                    <Pause className="w-5 h-5" fill="currentColor" />
+                  ) : (
+                    <Play className="w-5 h-5 ml-0.5" fill="currentColor" />
+                  )}
+                </button>
+
+                {/* Close */}
+                <button
+                  onClick={stopOnlinePlayback}
                   className="p-2 rounded-full text-slate-400 hover:text-slate-600 dark:text-zinc-500 dark:hover:text-zinc-300 cursor-pointer"
                 >
                   <X className="w-5 h-5" />
