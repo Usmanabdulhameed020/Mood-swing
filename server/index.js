@@ -19,11 +19,28 @@ mongoose.connect(MONGODB_URI)
     console.warn(`[Database] ⚠️ MongoDB is offline/not running.`);
   });
 
-// CORS configuration - Allow Vite frontend on any localhost port dynamically
+// CORS configuration - Allow Vite frontend locally and Vercel in production
+const allowedOrigins = [
+  /^http:\/\/localhost(:\d+)?$/,
+  'https://moodswing-app.vercel.app'
+];
+
 app.use(cors({
-  origin: /^http:\/\/localhost(:\d+)?$/,
+  origin: (origin, callback) => {
+    if (!origin) return callback(null, true);
+    const isAllowed = allowedOrigins.some(allowed => {
+      if (allowed instanceof RegExp) return allowed.test(origin);
+      return allowed === origin;
+    });
+    if (isAllowed) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   methods: ['GET', 'POST', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization']
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
 }));
 
 app.use(express.json());
